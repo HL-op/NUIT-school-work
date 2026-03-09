@@ -1,0 +1,45 @@
+//PTA：数组元素的区间删除
+
+#define _CRT_SECURE_NO_WARNINGS
+#include<cstdio>
+#define MAXN 20
+
+int Detele(int A[], int L, int min_A, int max_A);
+
+int main() {
+
+	int A[MAXN];
+	int L=0, min_A=0, max_A=0;
+	scanf("%d",&L);
+
+	for (int i = 0; i < L; i++) {
+		scanf("%d",&A[i]);
+	}
+
+	scanf("%d %d",&min_A,&max_A);
+
+	L = Detele(A, L, min_A, max_A);
+
+	for (int i = 0; i < L; i++) {
+		printf("%d ",A[i]);
+	}
+
+	return 0;
+}
+
+
+
+int Detele(int A[], int L, int min_A, int max_A) {
+
+	int new_len = 0;
+	for (int i = 0; i < L; i++) {
+		if (A[i] <= min_A || A[i] >= max_A) {
+
+			A[new_len] = A[i];
+			new_len++;
+
+		}
+	}
+
+	return new_len;
+}
